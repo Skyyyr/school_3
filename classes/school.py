@@ -1,5 +1,7 @@
+from ast import For
 from classes.staff import Staff
 from classes.student import Student
+
 
 class School:
     def __init__(self, name):
@@ -16,3 +18,14 @@ class School:
         for student in self.students:
             if student.school_id == student_id:
                 return student
+
+    def add_student(self, student_data):
+        # need to
+        self.students.append(Student(**student_data))
+
+    def delete_student(self, school_id):
+        for i in range(len(self.students)):
+            student = self.students[i]
+            if school_id == student.school_id:
+                self.students.pop(i)
+                break
